@@ -1,0 +1,110 @@
+{
+  "personal": {
+    "firstName": "Your",
+    "lastName": "Name",
+    "fullName": "Your Name",
+    "title": "Your Role",
+    "jobTitle": "Your Job Title",
+    "email": "your.email@example.com",
+    "greeting": "Hi, my name is",
+    "description": {
+      "intro": "I build digital products using",
+      "main": "modern technologies with real-world experience",
+      "highlightedTech": {
+        "primary": "Your Primary Skill",
+        "secondary": "Your Secondary Skill"
+      }
+    }
+  },
+  "about": {
+    "paragraphs": [
+      "Short introduction about yourself and your experience (e.g. years of experience, type of work).",
+      "Describe your main technical strengths, tools, or frameworks you enjoy working with.",
+      "Mention what kind of problems you like solving or what makes you unique as a developer."
+    ],
+    "stats": [
+      {
+        "icon": "Smartphone",
+        "label": "Skill Area 1",
+        "sublabel": "Short description"
+      },
+      {
+        "icon": "Server",
+        "label": "Skill Area 2",
+        "sublabel": "Short description"
+      },
+      {
+        "icon": "Code",
+        "label": "Skill Area 3",
+        "sublabel": "Short description"
+      },
+      {
+        "icon": "Zap",
+        "label": "Skill Area 4",
+        "sublabel": "Short description"
+      }
+    ]
+  },
+  "projects": {
+    "heading": "Featured Projects",
+    "subheading": "A selection of projects showcasing my work and skills"
+  },
+  "contact": {
+    "heading": "Get In Touch",
+    "subheading": "Have a project, idea, or opportunity? Feel free to reach out.",
+    "email": "your.email@example.com",
+    "emailButtonText": "Email Me",
+    "socialLinks": [
+      {
+        "name": "LinkedIn",
+        "icon": "Linkedin",
+        "url": "https://linkedin.com/in/yourusername",
+        "color": "hover:text-blue-500"
+      },
+      {
+        "name": "GitHub",
+        "icon": "Github",
+        "url": "https://github.com/yourusername",
+        "color": "hover:text-purple-500"
+      }
+    ]
+  },
+  "navigation": {
+    "items": [
+      "Home",
+      "About",
+      "Projects",
+      "Contact"
+    ]
+  },
+  "cta": {
+    "primary": {
+      "text": "View My Work",
+      "href": "#projects"
+    },
+    "secondary": {
+      "text": "Get In Touch",
+      "href": "#contact"
+    }
+  },
+  "metadata": {
+    "title": "Your Name | Your Role",
+    "description": "Brief SEO-friendly description about you and your work.",
+    "keywords": [
+      "Your Name",
+      "Your Skill",
+      "Developer Portfolio",
+      "Web Developer",
+      "Software Engineer"
+    ],
+    "openGraph": {
+      "title": "Your Name | Portfolio",
+      "description": "Showcasing projects, skills, and experience",
+      "type": "website"
+    }
+  },
+  "footer": {
+    "copyrightText": "All rights reserved.",
+    "showScrollToTop": true
+  }
+}
