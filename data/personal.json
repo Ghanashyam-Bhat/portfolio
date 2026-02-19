@@ -1,47 +1,47 @@
 {
   "personal": {
-    "firstName": "Your",
-    "lastName": "Name",
-    "fullName": "Your Name",
-    "title": "Your Role",
-    "jobTitle": "Your Job Title",
-    "email": "your.email@example.com",
+    "firstName": "Ghanashyam",
+    "lastName": "Bhat",
+    "fullName": "Ghanashyam Mahesh Bhat",
+    "title": "Software Engineer",
+    "jobTitle": "",
+    "email": "iamgmbhat@gmail.com",
     "greeting": "Hi, my name is",
     "description": {
       "intro": "I build digital products using",
       "main": "modern technologies with real-world experience",
       "highlightedTech": {
-        "primary": "Your Primary Skill",
-        "secondary": "Your Secondary Skill"
+        "primary": "Full stack development",
+        "secondary": "System software engineering"
       }
     }
   },
   "about": {
     "paragraphs": [
-      "Short introduction about yourself and your experience (e.g. years of experience, type of work).",
-      "Describe your main technical strengths, tools, or frameworks you enjoy working with.",
-      "Mention what kind of problems you like solving or what makes you unique as a developer."
+        "I've always been driven by the challenge of building from the ground up. My career began in the high-energy environments of hackathons and early-stage startups, where I worked alongside founders to shape products from scratch. These experiences instilled in me a product-first mindset: the ability to move fast, take ownership, and build features that solve genuine user needs.",
+        "Currently, at Arista Networks, I've shifted my focus toward the foundations of computing, working on software that operates close to the hardware. In an environment where performance and correctness are non-negotiable, I develop components within complex frameworks, prioritizing test-driven development and long-term maintainability. This role has sharpened my technical precision and my appreciation for clean, scalable system architecture.",
+        "Whether I'm navigating the ambiguity of a new venture or the rigorous engineering standards of a global leader, my goal remains the same: to understand exactly how things work so I can build systems that work better. I thrive on diving into technical challenges that demand both creative problem-solving and a disciplined approach to craftsmanship."
     ],
     "stats": [
       {
         "icon": "Smartphone",
-        "label": "Skill Area 1",
-        "sublabel": "Short description"
+        "label": "Full stack development",
+        "sublabel": "Building scalable Go, Node.js, and React applications with integrated Python microservices."
       },
       {
         "icon": "Server",
-        "label": "Skill Area 2",
-        "sublabel": "Short description"
+        "label": "Systems & Security",
+        "sublabel": "Specialized in Linux Kernel programming, system software development and AI-driven network threat detection."
       },
       {
         "icon": "Code",
-        "label": "Skill Area 3",
-        "sublabel": "Short description"
+        "label": "Blockchain & Web3",
+        "sublabel": "Developing decentralized applications with Solidity smart contracts for automated appointments and payments."
       },
       {
         "icon": "Zap",
-        "label": "Skill Area 4",
-        "sublabel": "Short description"
+        "label": "DevOps & Infrastructure",
+        "sublabel": "Expertise in Docker containerization, Kubernetes orchestration, and robust CI/CD pipeline automation."
       }
     ]
   },
@@ -52,19 +52,19 @@
   "contact": {
     "heading": "Get In Touch",
     "subheading": "Have a project, idea, or opportunity? Feel free to reach out.",
-    "email": "your.email@example.com",
+    "email": "iamgmbhat@gmail.com",
     "emailButtonText": "Email Me",
     "socialLinks": [
       {
         "name": "LinkedIn",
         "icon": "Linkedin",
-        "url": "https://linkedin.com/in/yourusername",
+        "url": "https://www.linkedin.com/in/the-giga-byte/",
         "color": "hover:text-blue-500"
       },
       {
         "name": "GitHub",
         "icon": "Github",
-        "url": "https://github.com/yourusername",
+        "url": "https://github.com/Ghanashyam-Bhat",
         "color": "hover:text-purple-500"
       }
     ]

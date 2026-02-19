@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ExternalLink, Code } from 'lucide-react'
 import { projectsData } from '@/data/projects'
@@ -49,15 +50,17 @@ export default function Projects() {
                 >
                   {/* Project Image */}
                   <div className="relative aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-slate-900">
-                    <img
+                    <Image
                       src={project.image}
-                      alt={project.imageAlt}
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      alt={project.imageAlt || "Project preview"}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      // Next.js handles loading states, but if you still want to hide on error:
                       onError={(e) => {
-                        e.currentTarget.style.display = 'none'
+                        e.currentTarget.style.opacity = '0'
                       }}
                     />
-
                     {/* Fallback */}
                     <div
                       className={`hidden absolute inset-0 bg-gradient-to-br ${project.gradient} items-center justify-center`}

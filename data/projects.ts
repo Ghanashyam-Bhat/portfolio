@@ -13,51 +13,52 @@ export interface Project {
 export const projectsData: Project[] = [
   {
     id: 1,
-    title: "Project 1 – Your Main Project",
+    title: "NetSpect - AI-Powered Covert Timing Channel Detection",
     description: [
-      "Briefly describe what this project is about",
-      "Mention the problem it solves or the goal of the project",
-      "Highlight the main features or technical challenges",
-      "Explain what makes this project interesting or unique"
+      "Developed an AI-based system to detect and disrupt covert timing channels that bypass traditional firewalls.",
+      "Solves the risk of illegal data exfiltration in high-security sectors like Defense and Research by monitoring hidden communication.",
+      "Implemented a two-layered approach: Layer 1 for protocol header normalization (TTL/TCP Timestamps) and Layer 2 for IAT-based detection using Machine Learning.",
+      "Uniquely combines Linux Kernel Modules for real-time prevention with a Decision Tree model for traffic classification."
     ],
-    image: "/images/project.jpg",
-    imageAlt: "Project 1 preview image",
-    liveUrl: "https://your-live-demo.com",
-    githubUrl: "https://github.com/yourusername/project-1",
-    tags: ["Your Tech", "Your Stack", "Feature 1", "Feature 2"],
+    image: "/images/netspect.png",
+    imageAlt: "NetSpect network security project preview",
+    liveUrl: "",
+    githubUrl: "https://github.com/Ghanashyam-Bhat/NetSpect",
+    tags: ["C", "Python", "Linux Kernel", "Machine Learning", "Netfilter"],
     gradient: "from-emerald-500 to-cyan-500"
   },
 
   {
     id: 2,
-    title: "Project 2 – Secondary Project",
+    title: "Secure Enterprise Event Management",
     description: [
-      "Short explanation of the project",
-      "What technologies were used",
-      "What you learned while building it",
-      "How it was deployed or used"
+      "An enterprise-grade platform for managing large-scale organizational events and attendee check-ins.",
+      "Built with a Go-based REST API backend and a React frontend to ensure high performance and security.",
+      "Integrated a specialized kiosk mode for secure on-site registration and a Python-driven microservice for automated communication.",
+      "Deployed with robust audit logging and JWT-based authentication for administrative oversight."
     ],
-    image: "/images/project.jpg",
-    imageAlt: "Project 2 preview image",
-    liveUrl: "https://your-live-demo.com",
-    githubUrl: "https://github.com/yourusername/project-2",
-    tags: ["Frontend", "Backend", "API", "Deployment"],
+    image: "/images/attendence.png",
+    imageAlt: "Enterprise platform preview",
+    liveUrl: "",
+    githubUrl: "https://github.com/Ghanashyam-Bhat/pinakatech-event-management",
+    tags: ["Go", "React", "Python", "JWT", "PostgreSQL"],
     gradient: "from-cyan-500 to-blue-500"
   },
 
   {
     id: 3,
-    title: "Project 3 – Side or Learning Project",
+    title: "Yoga-Studio DApp - Blockchain Appointment System",
     description: [
-      "Describe the idea behind this project",
-      "Mention any experiments or learning goals",
-      "Explain the core functionality",
-      "Share how this project helped you grow as a developer"
+      "A decentralized application built to automate yoga studio bookings and payments using the Ethereum network.",
+      "Experimented with Solidity to create immutable smart contracts for managing appointment slots and peer-to-peer financial transactions.",
+      "Features a full-stack architecture with a Node.js/Express backend and EJS-based frontend dashboard.",
+      "Enhanced skills in Web3 integration and containerized deployment using Docker and Kubernetes."
     ],
-    image: "/images/project.jpg",
-    imageAlt: "Project 3 preview image",
-    githubUrl: "https://github.com/yourusername/project-3",
-    tags: ["Side Project", "Learning", "Experiment"],
+    image: "/images/dapp.png",
+    imageAlt: "Yoga Studio DApp blockchain project preview",
+    liveUrl: "",
+    githubUrl: "https://github.com/Ghanashyam-Bhat/yoga-studio-dapp",
+    tags: ["Solidity", "Ethereum", "Node.js", "Docker", "Web3.js"],
     gradient: "from-pink-500 to-rose-500"
   }
-]
+];
