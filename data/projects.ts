@@ -23,7 +23,7 @@ export const projectsData: Project[] = [
     image: "/images/netspect.png",
     imageAlt: "NetSpect network security project preview",
     liveUrl: "",
-    githubUrl: "https://github.com/Ghanashyam-Bhat/NetSpect",
+    githubUrl: "https://github.com/2020-HelloWorld/NetSpect",
     tags: ["C", "Python", "Linux Kernel", "Machine Learning", "Netfilter"],
     gradient: "from-emerald-500 to-cyan-500"
   },
@@ -40,7 +40,7 @@ export const projectsData: Project[] = [
     image: "/images/attendence.png",
     imageAlt: "Enterprise platform preview",
     liveUrl: "",
-    githubUrl: "https://github.com/Ghanashyam-Bhat/pinakatech-event-management",
+    githubUrl: "https://github.com/2020-HelloWorld/pinakatech-event-management",
     tags: ["Go", "React", "Python", "JWT", "PostgreSQL"],
     gradient: "from-cyan-500 to-blue-500"
   },
