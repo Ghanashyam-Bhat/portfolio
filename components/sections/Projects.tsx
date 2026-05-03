@@ -3,12 +3,14 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ExternalLink, Code } from 'lucide-react'
+import { Github, Code } from 'lucide-react'
 import { projectsData } from '@/data/projects'
 import { personalInfo } from '@/data/personal'
+import { useUIStore } from '@/store/uiStore'
 
 export default function Projects() {
   const { projects } = personalInfo
+  const setCursorVariant = useUIStore((s) => s.setCursorVariant)
   const [expandedId, setExpandedId] = useState<number | null>(null)
 
   return (
@@ -19,24 +21,21 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          {/* Section Header */}
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-center">
-            <span>
-              {projects.heading.split(' ').slice(0, -1).join(' ')}{' '}
-            </span>
-            <span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
+            <span>{projects.heading.split(' ').slice(0, -1).join(' ')}{' '}</span>
+            <span className="bg-gradient-to-r from-pista-500 to-silver-500 bg-clip-text text-transparent">
               {projects.heading.split(' ').slice(-1)[0]}
             </span>
           </h2>
 
-          <p className="text-gray-600 dark:text-gray-400 text-center mb-16 text-lg">
+          <p className="text-gray-400 text-center mb-16 text-lg">
             {projects.subheading}
           </p>
 
-          {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projectsData.map((project, i) => {
               const isExpanded = expandedId === project.id
+              const href = project.githubUrl || project.liveUrl || '#'
 
               return (
                 <motion.div
@@ -46,93 +45,79 @@ export default function Projects() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                   whileHover={{ y: -8 }}
-                  className="group relative bg-white dark:bg-white/5 rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-sm shadow-sm hover:shadow-xl"
+                  onMouseEnter={() => setCursorVariant('default')}
+                  onMouseLeave={() => setCursorVariant('default')}
+                  onClick={() => window.open(href, '_blank', 'noopener,noreferrer')}
+                  className="group relative bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-pista-500/50 hover:shadow-xl hover:shadow-pista-500/15 transition-all duration-300"
                 >
-                  {/* Project Image */}
-                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-slate-900">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-slate-900">
                     <Image
                       src={project.image}
-                      alt={project.imageAlt || "Project preview"}
+                      alt={project.imageAlt || 'Project preview'}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                      // Next.js handles loading states, but if you still want to hide on error:
-                      onError={(e) => {
-                        e.currentTarget.style.opacity = '0'
-                      }}
+                      onError={(e) => { e.currentTarget.style.opacity = '0' }}
                     />
-                    {/* Fallback */}
                     <div
                       className={`hidden absolute inset-0 bg-gradient-to-br ${project.gradient} items-center justify-center`}
                     >
                       <Code className="w-16 h-16 text-white/50" />
                     </div>
-
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-300" />
+                    <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-black/60 backdrop-blur-sm rounded-full text-white text-xs font-medium">
+                        <Github className="w-3.5 h-3.5" />
+                        View on GitHub
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Content */}
                   <div className="p-6">
-                    <h3 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-cyan-500 transition-colors">
+                    <h3 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-pista-500 transition-colors">
                       {project.title}
                     </h3>
 
-                    {/* Description (Expandable) */}
                     <motion.div
                       initial={false}
                       animate={{ height: isExpanded ? 'auto' : 72 }}
                       className="overflow-hidden"
                     >
-                      <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                        {(isExpanded
-                          ? project.description
-                          : project.description.slice(0, 2)
-                        ).map((point, idx) => (
-                          <li
-                            key={`${project.id}-${idx}-${point.slice(0, 10)}`}
-                          >
-                            • {point}
-                          </li>
-                        ))}
+                      <ul className="space-y-2 text-sm text-gray-400 leading-relaxed">
+                        {(isExpanded ? project.description : project.description.slice(0, 2)).map(
+                          (point, idx) => (
+                            <li key={`${project.id}-${idx}-${point.slice(0, 10)}`}>
+                              • {point}
+                            </li>
+                          )
+                        )}
                       </ul>
                     </motion.div>
 
-                    {/* Read More / Less */}
                     {project.description.length > 2 && (
                       <button
-                        onClick={() =>
+                        onClick={(e) => {
+                          e.stopPropagation()
                           setExpandedId(isExpanded ? null : project.id)
-                        }
-                        className="mt-3 text-sm font-medium text-cyan-500 hover:text-cyan-600 transition"
+                        }}
+                        onMouseEnter={(e) => { e.stopPropagation(); setCursorVariant('default') }}
+                        onMouseLeave={(e) => { e.stopPropagation(); setCursorVariant('default') }}
+                        className="mt-3 text-sm font-medium text-pista-500 hover:text-pista-600 transition"
                       >
                         {isExpanded ? 'Show less' : 'Read more'}
                       </button>
                     )}
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mt-4 mb-4">
+                    <div className="flex flex-wrap gap-2 mt-4">
                       {project.tags.slice(0, 4).map((tag, j) => (
                         <span
                           key={`${project.id}-tag-${j}`}
-                          className="px-3 py-1 text-xs font-medium bg-cyan-50 dark:bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 rounded-full border border-cyan-200 dark:border-cyan-500/20"
+                          className="px-3 py-1 text-xs font-medium bg-pista-500/10 text-pista-400 rounded-full border border-pista-500/20"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
-
-                    {/* Live Link */}
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors text-sm font-medium"
-                      >
-                        View Project <ExternalLink className="w-4 h-4" />
-                      </a>
-                    )}
                   </div>
                 </motion.div>
               )

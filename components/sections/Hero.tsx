@@ -1,30 +1,90 @@
 'use client'
 
-
-import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { useUIStore } from '@/store/uiStore'
 import { personalInfo } from '@/data/personal'
 
 export default function Hero() {
-  const { darkMode } = useUIStore()
+  const { setCursorVariant } = useUIStore()
   const { personal, cta } = personalInfo
+  const heroRef = useRef<HTMLElement>(null)
+
+  const rawX = useMotionValue(0)
+  const rawY = useMotionValue(0)
+
+  const b1x = useSpring(rawX, { stiffness: 35, damping: 18 })
+  const b1y = useSpring(rawY, { stiffness: 35, damping: 18 })
+  const b2x = useSpring(rawX, { stiffness: 70, damping: 20 })
+  const b2y = useSpring(rawY, { stiffness: 70, damping: 20 })
+  const b3x = useSpring(rawX, { stiffness: 160, damping: 26 })
+  const b3y = useSpring(rawY, { stiffness: 160, damping: 26 })
+
+  const b2xOff = useTransform(b2x, (v) => v - 140)
+  const b2yOff = useTransform(b2y, (v) => v - 80)
+  const b3xOff = useTransform(b3x, (v) => v + 100)
+  const b3yOff = useTransform(b3y, (v) => v + 60)
+
+  useEffect(() => {
+    const section = heroRef.current
+    if (!section) return
+    const rect = section.getBoundingClientRect()
+    rawX.set(rect.width / 2)
+    rawY.set(rect.height / 2)
+    const onMove = (e: MouseEvent) => {
+      const r = section.getBoundingClientRect()
+      rawX.set(e.clientX - r.left)
+      rawY.set(e.clientY - r.top)
+    }
+    section.addEventListener('mousemove', onMove)
+    return () => section.removeEventListener('mousemove', onMove)
+  }, [rawX, rawY])
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      {/* Animated Background Grid */}
-      <div className="absolute inset-0 opacity-10 dark:opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: darkMode
-            ? 'linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)'
-            : 'linear-gradient(rgba(6, 182, 212, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.15) 1px, transparent 1px)',
-          backgroundSize: '50px 50px'
-        }} />
+    <section
+      ref={heroRef}
+      id="home"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
+    >
+      {/* Background — water gradient blobs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(122,186,84,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(122,186,84,0.06) 1px, transparent 1px)',
+            backgroundSize: '52px 52px',
+          }}
+        />
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: 720, height: 720, x: b1x, y: b1y,
+            translateX: '-50%', translateY: '-50%',
+            background: 'radial-gradient(circle, rgba(122,186,84,0.18) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+          }}
+        />
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: 560, height: 560, x: b2xOff, y: b2yOff,
+            translateX: '-50%', translateY: '-50%',
+            background: 'radial-gradient(circle, rgba(128,151,171,0.14) 0%, transparent 70%)',
+            filter: 'blur(100px)',
+          }}
+        />
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: 320, height: 320, x: b3xOff, y: b3yOff,
+            translateX: '-50%', translateY: '-50%',
+            background: 'radial-gradient(circle, rgba(158,207,126,0.24) 0%, transparent 65%)',
+            filter: 'blur(60px)',
+          }}
+        />
       </div>
-
-      {/* Gradient Orbs */}
-      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-cyan-500/20 dark:bg-cyan-500/30 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-blue-500/20 dark:bg-blue-500/30 rounded-full blur-3xl animate-pulse delay-1000" />
 
       <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
         <motion.div
@@ -32,31 +92,43 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-cyan-500 text-sm md:text-base mb-4 font-mono"
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+            className="mb-6 flex justify-center"
           >
-            {personal.greeting}
-          </motion.p>
+            <span className="text-pista-500 text-sm md:text-base font-mono">
+              {personal.greeting}
+            </span>
+          </motion.div>
 
-          <h1 className="text-6xl md:text-8xl font-bold mb-6">
-            <span className="text-cyan-500">{personal.firstName}</span>{' '}
-            <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-none">
+            <span className="text-pista-500">{personal.firstName}</span>{' '}
+            <span className="bg-gradient-to-r from-silver-400 to-silver-600 bg-clip-text text-transparent">
               {personal.lastName}
             </span>
           </h1>
 
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-8">
             {personal.title}
           </h2>
 
-          <p className="text-gray-600 dark:text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-4">
+          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-3">
             {personal.description.intro}
           </p>
-          <p className="text-gray-600 dark:text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-12">
-            <span className="text-cyan-500 font-semibold">{personal.description.highlightedTech.primary}</span> & <span className="text-blue-500 font-semibold">{personal.description.highlightedTech.secondary}</span> {personal.description.main.replace(new RegExp(personal.description.highlightedTech.primary, 'gi'), '').replace(new RegExp(personal.description.highlightedTech.secondary, 'gi'), '').trim()}
+          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-12">
+            <span className="text-pista-500 font-semibold">
+              {personal.description.highlightedTech.primary}
+            </span>
+            {' & '}
+            <span className="text-silver-400 font-semibold">
+              {personal.description.highlightedTech.secondary}
+            </span>{' '}
+            {personal.description.main
+              .replace(new RegExp(personal.description.highlightedTech.primary, 'gi'), '')
+              .replace(new RegExp(personal.description.highlightedTech.secondary, 'gi'), '')
+              .trim()}
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">
@@ -64,7 +136,9 @@ export default function Hero() {
               href={cta.primary.href}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-cyan-500/50 transition-all"
+              onMouseEnter={() => setCursorVariant('hovering')}
+              onMouseLeave={() => setCursorVariant('default')}
+              className="px-8 py-4 rounded-lg font-semibold text-white transition-all bg-gradient-to-r from-pista-500 to-silver-500 hover:shadow-lg hover:shadow-pista-500/40"
             >
               {cta.primary.text}
             </motion.a>
@@ -72,7 +146,9 @@ export default function Hero() {
               href={cta.secondary.href}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 border border-cyan-500 text-cyan-500 rounded-lg font-semibold hover:bg-cyan-500/10 transition-all"
+              onMouseEnter={() => setCursorVariant('hovering')}
+              onMouseLeave={() => setCursorVariant('default')}
+              className="px-8 py-4 rounded-lg font-semibold transition-all border border-pista-500 text-pista-500 hover:bg-pista-500/10"
             >
               {cta.secondary.text}
             </motion.a>
@@ -83,11 +159,10 @@ export default function Hero() {
             transition={{ repeat: Infinity, duration: 2 }}
             className="mt-20"
           >
-            <ChevronDown className="w-8 h-8 mx-auto text-cyan-500" />
+            <ChevronDown className="w-8 h-8 mx-auto text-pista-500" />
           </motion.div>
         </motion.div>
       </div>
     </section>
   )
 }
-

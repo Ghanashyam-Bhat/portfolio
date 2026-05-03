@@ -12,29 +12,16 @@ export default function Home() {
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 })
 
   return (
-    <div className="min-h-screen transition-colors duration-500">
-      {/* Progress Bar */}
+    <div className="min-h-screen" style={{ backgroundColor: '#080c09' }}>
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-pista-500 origin-left z-50"
         style={{ scaleX }}
       />
-
-      {/* Navigation */}
       <Navbar />
-
-      {/* Hero Section */}
       <Hero />
-
-      {/* About Section */}
       <About />
-
-      {/* Projects Section */}
       <Projects />
-
-      {/* Contact Section */}
       <Contact />
-
-      {/* Footer */}
       <Footer />
     </div>
   )

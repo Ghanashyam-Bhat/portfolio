@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Mail, Linkedin, Github } from 'lucide-react'
 import { personalInfo } from '@/data/personal'
+import { useUIStore } from '@/store/uiStore'
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Mail,
@@ -12,9 +13,11 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 
 export default function Contact() {
   const { contact } = personalInfo
+  const { setCursorVariant } = useUIStore()
+
   return (
     <section id="contact" className="py-32 px-6 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 dark:via-cyan-500/5 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-pista-500/5 to-transparent pointer-events-none" />
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <motion.div
@@ -24,9 +27,9 @@ export default function Contact() {
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             <span>{contact.heading.split(' ').slice(0, -1).join(' ')} </span>
-            <span className="text-cyan-500">{contact.heading.split(' ').slice(-1)[0]}</span>
+            <span className="text-pista-500">{contact.heading.split(' ').slice(-1)[0]}</span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
             {contact.subheading}
           </p>
 
@@ -34,7 +37,9 @@ export default function Contact() {
             href={`mailto:${contact.email}`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-semibold text-lg text-white hover:shadow-2xl hover:shadow-cyan-500/50 transition-all"
+            onMouseEnter={() => setCursorVariant('hovering')}
+            onMouseLeave={() => setCursorVariant('default')}
+            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-pista-500 to-silver-500 rounded-full font-semibold text-lg text-white hover:shadow-2xl hover:shadow-pista-500/40 transition-all"
           >
             <Mail className="w-6 h-6" />
             {contact.emailButtonText}
@@ -51,7 +56,9 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className={`p-4 bg-gray-100 dark:bg-white/5 rounded-full border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 ${social.color} transition-all backdrop-blur-sm`}
+                  onMouseEnter={() => setCursorVariant('hovering')}
+                  onMouseLeave={() => setCursorVariant('default')}
+                  className={`p-4 bg-white/5 rounded-full border border-white/10 text-gray-400 hover:border-white/20 transition-all ${social.color}`}
                 >
                   {IconComponent && <IconComponent className="w-6 h-6" />}
                 </motion.a>
@@ -63,4 +70,3 @@ export default function Contact() {
     </section>
   )
 }
-

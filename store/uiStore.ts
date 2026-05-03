@@ -2,19 +2,20 @@
 
 import { create } from 'zustand'
 
+export type CursorVariant = 'default' | 'hovering' | 'project'
+
 interface UIStore {
-  darkMode: boolean
   mobileMenuOpen: boolean
-  toggleDarkMode: () => void
+  cursorVariant: CursorVariant
   toggleMobileMenu: () => void
   closeMobileMenu: () => void
+  setCursorVariant: (variant: CursorVariant) => void
 }
 
 export const useUIStore = create<UIStore>((set) => ({
-  darkMode: true, // Default to dark mode
   mobileMenuOpen: false,
-  toggleDarkMode: () => set((state) => ({ darkMode: !state.darkMode })),
-  toggleMobileMenu: () => set((state) => ({ mobileMenuOpen: !state.mobileMenuOpen })),
-  closeMobileMenu: () => set({ mobileMenuOpen: false }),
+  cursorVariant: 'default',
+  toggleMobileMenu: () => set((s) => ({ mobileMenuOpen: !s.mobileMenuOpen })),
+  closeMobileMenu:  () => set({ mobileMenuOpen: false }),
+  setCursorVariant: (variant) => set({ cursorVariant: variant }),
 }))
-

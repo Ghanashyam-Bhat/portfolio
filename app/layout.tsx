@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { JetBrains_Mono, Outfit } from 'next/font/google'
 import './globals.css'
-import DarkModeProvider from '@/components/providers/DarkModeProvider'
+import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider'
+import CustomCursor from '@/components/ui/CustomCursor'
 import { personalInfo } from '@/data/personal'
 
 const jetbrainsMono = JetBrains_Mono({
@@ -34,11 +35,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${jetbrainsMono.variable} ${outfit.variable}`}>
-      <body>
-        <DarkModeProvider>
+    <html lang="en" className={`${jetbrainsMono.variable} ${outfit.variable}`} style={{ backgroundColor: '#080c09', color: '#ededed' }}>
+      <body style={{ backgroundColor: '#080c09', color: '#ededed', minHeight: '100vh' }}>
+        <SmoothScrollProvider>
+          <CustomCursor />
           {children}
-        </DarkModeProvider>
+        </SmoothScrollProvider>
       </body>
     </html>
   )
