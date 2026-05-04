@@ -1,7 +1,4 @@
-'use client'
-
 import { useState } from 'react'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Github, Code } from 'lucide-react'
 import { projectsData } from '@/data/projects'
@@ -51,12 +48,10 @@ export default function Projects() {
                   className="group relative bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-pista-500/50 hover:shadow-xl hover:shadow-pista-500/15 transition-all duration-300"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden bg-slate-900">
-                    <Image
+                    <img
                       src={project.image}
                       alt={project.imageAlt || 'Project preview'}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                       onError={(e) => { e.currentTarget.style.opacity = '0' }}
                     />
                     <div

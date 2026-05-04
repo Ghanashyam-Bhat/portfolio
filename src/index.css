@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* ── Custom colour palette ── */
+@theme {
+  --color-pista-50:  #eef8e6;
+  --color-pista-100: #d9f0c6;
+  --color-pista-200: #d6edbe;
+  --color-pista-300: #bcdfa0;
+  --color-pista-400: #9ecf7e;
+  --color-pista-500: #7aba54;
+  --color-pista-600: #5e9a3e;
+  --color-pista-700: #3d6e28;
+  --color-pista-800: #2a4d1b;
+
+  --color-silver-200: #dce4eb;
+  --color-silver-300: #c4d0da;
+  --color-silver-400: #a4b5c4;
+  --color-silver-500: #8097ab;
+  --color-silver-600: #607d8f;
+  --color-silver-700: #445a6a;
+
+  --font-outfit: 'Outfit', sans-serif;
+  --font-jetbrains: 'JetBrains Mono', monospace;
+}
+
+/* ── Base ── */
+:root {
+  --bg: #080c09;
+  --fg: #ededed;
+}
+
+html,
+body {
+  background-color: #080c09 !important;
+  color: #ededed;
+  min-height: 100%;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ── Hide native cursor on pointer-precise devices ── */
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: rgba(122, 186, 84, 0.25);
+}
+
+/* ── Lenis ── */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
