@@ -8,14 +8,14 @@
     "email": "iamgmbhat@gmail.com",
     "greeting": "Hi, my name is",
     "description": {
-      "intro": "I build digital products using",
-      "main": "modern technologies with real-world experience",
+      "intro": "I build digital products using modern technologies and real-world experience.",
+      "main": "are my primary focus areas — from startup products to production-grade systems software.",
       "highlightedTech": {
         "primary": "Full stack development",
         "secondary": "System software engineering"
+        }
       }
-    }
-  },
+    },
   "about": {
     "paragraphs": [
         "I've always been driven by the challenge of building from the ground up. My career began in the high-energy environments of hackathons and early-stage startups, where I worked alongside founders to shape products from scratch. These experiences instilled in me a product-first mindset: the ability to move fast, take ownership, and build features that solve genuine user needs.",
@@ -23,27 +23,47 @@
         "Whether I'm navigating the ambiguity of a new venture or the rigorous engineering standards of a global leader, my goal remains the same: to understand exactly how things work so I can build systems that work better. I thrive on diving into technical challenges that demand both creative problem-solving and a disciplined approach to craftsmanship."
     ],
     "stats": [
-      {
-        "icon": "Smartphone",
-        "label": "Full stack development",
-        "sublabel": "Building scalable Go, Node.js, and React applications with integrated Python microservices."
-      },
-      {
-        "icon": "Server",
-        "label": "Systems & Security",
-        "sublabel": "Specialized in Linux Kernel programming, system software development and AI-driven network threat detection."
-      },
-      {
-        "icon": "Code",
-        "label": "Blockchain & Web3",
-        "sublabel": "Developing decentralized applications with Solidity smart contracts for automated appointments and payments."
-      },
-      {
-        "icon": "Zap",
-        "label": "DevOps & Infrastructure",
-        "sublabel": "Expertise in Docker containerization, Kubernetes orchestration, and robust CI/CD pipeline automation."
-      }
-    ]
+    {
+      "icon": "Layers",
+      "label": "Full-Stack Architecture",
+      "sublabel": "Engineering scalable Go and Node.js systems with React frontends and Python-driven microservices."
+    },
+    {
+      "icon": "Cpu",
+      "label": "Systems & Low-Level",
+      "sublabel": "Developing performance-critical software focusing on Linux Kernel, system reliability, and hardware-near logic."
+    },
+    {
+      "icon": "Bot",
+      "label": "Agentic AI Workflows",
+      "sublabel": "Designing autonomous agents for intelligent code reviews and automated workspace communication."
+    },
+    {
+      "icon": "GitBranch",
+      "label": "DevOps & CI/CD",
+      "sublabel": "Optimizing delivery pipelines through Docker containerization and Kubernetes orchestration."
+    },
+    {
+      "icon": "Network",
+      "label": "Advanced Networking",
+      "sublabel": "Hands-on expertise in SRv6, Broadcom silicon, and high-performance packet processing."
+    },
+    {
+      "icon": "HardDrive",
+      "label": "Home-Lab Ecosystems",
+      "sublabel": "Building resilient personal server infrastructures using Ubuntu, Netdata, and Cloudflare Tunnels."
+    },
+    {
+      "icon": "ShieldCheck",
+      "label": "Network Security",
+      "sublabel": "Developing AI-driven threat detection models to secure complex network architectures."
+    },
+    {
+      "icon": "Terminal",
+      "label": "Open Source & Scripting",
+      "sublabel": "Automating system management and deploying modern stack environments via Coolify and custom tooling."
+    }
+  ]
   },
   "projects": {
     "heading": "Featured Projects",
@@ -88,18 +108,37 @@
     }
   },
   "metadata": {
-    "title": "Your Name | Your Role",
-    "description": "Brief SEO-friendly description about you and your work.",
+    "title": "Ghanashyam Bhat | Software Engineer - Full-Stack & Systems Developer",
+    "description": "Ghanashyam Bhat is a Software Engineer at Arista Networks specializing in full-stack development (Go, React, Python), systems software, Linux kernel, advanced networking (SRv6), and DevOps. Explore his portfolio, projects, and open-source work.",
     "keywords": [
-      "Your Name",
-      "Your Skill",
-      "Developer Portfolio",
-      "Web Developer",
-      "Software Engineer"
+      "Ghanashyam Bhat",
+      "Ghanashyam Mahesh Bhat",
+      "iamgmbhat",
+      "software engineer",
+      "full stack developer",
+      "systems engineer",
+      "backend developer",
+      "Go developer",
+      "React developer",
+      "Python developer",
+      "Linux kernel developer",
+      "network engineer",
+      "SRv6",
+      "DevOps engineer",
+      "Arista Networks engineer",
+      "developer portfolio",
+      "engineer portfolio",
+      "Docker",
+      "Kubernetes",
+      "machine learning",
+      "network security",
+      "open source developer",
+      "web developer India",
+      "pinakatech"
     ],
     "openGraph": {
-      "title": "Your Name | Portfolio",
-      "description": "Showcasing projects, skills, and experience",
+      "title": "Ghanashyam Bhat | Software Engineer - Full-Stack & Systems Developer",
+      "description": "Software Engineer at Arista Networks. Full-stack development, systems software, Linux kernel, SRv6 networking, and DevOps. View projects and experience.",
       "type": "website"
     }
   },
